@@ -1,0 +1,707 @@
+ 1/1: cd nyprosessering
+ 1/2: git pull
+ 1/3: !git status
+ 1/4: !git pull
+ 1/5: %run formatsjekk.py
+ 1/6: myset = { 'a', 'fine', 'set' }
+ 1/7: ','.join( myset)
+ 1/8: ','.join( ['asdf'], myset)
+ 1/9: ','.join( ['asdf'].extend( list( myset)))
+1/10: ','.join( ['asdf', *myset ])
+1/11: %run formatsjekk
+1/12: %run formatsjekk
+1/13: %run formatsjekk
+1/14: %run formatsjekk
+1/15: %run formatsjekk
+1/16: %run formatsjekk
+1/17: %run formatsjekk
+1/18: ?testing
+1/19: %run formatsjekk
+1/20: !ls
+1/21: !rmdir eksempler/
+1/22: !rm -r eksempler/
+1/23: !rmdir eksempler
+1/24: !ls eksempler/
+1/25: testing()
+ 2/1: import formatsjekk
+ 2/2: !ls
+ 2/3: cd nyprosessering/
+ 2/4: import formatsjekk
+ 2/5: formatsjekk.testing()
+ 2/6: import importlib
+ 2/7: importlib.reload( formatsjekk)
+ 2/8: formatsjekk.testing()
+ 3/1: %run formatsjekk
+ 3/2: jsondata
+ 3/3: import format
+ 3/4: import formatsjekk
+ 3/5: import importlib
+ 3/6: ?formatsjekk.sjekktagg
+ 3/7: formatsjekk.sjekktagg( jsondata, 'exif_dato', 'datetime' )
+ 3/8: formatsjekk.sjekktagg( jsondata, 'exif_dato', 'str' )
+ 3/9: formatsjekk.sjekktagg( jsondata, 'exif_dato', 'int' )
+3/10: importlib.reload( formatsjekk)
+3/11: formatsjekk.sjekktagg( jsondata, 'exif_dato', 'int' )
+3/12: formatsjekk.sjekktagg( jsondata, 'exif_dato', 'date' )
+3/13: jsondata.keys()
+3/14: jsondata['exif_dato']
+3/15: jsondata['exif_tid']
+3/16: jsondata
+3/17: formatsjekk.sjekktagg( jsondata, 'senterlinjeposisjon', 'date' )
+3/18: formatsjekk.sjekktagg( jsondata, 'senterlinjeposisjon', 'str )
+3/19: formatsjekk.sjekktagg( jsondata, 'senterlinjeposisjon', 'str' )
+3/20: formatsjekk.sjekktagg( jsondata, 'versjon', 'str' )
+3/21: formatsjekk.sjekktagg( jsondata, 'reflinkid', 'str' )
+3/22: formatsjekk.sjekktagg( jsondata, 'reflinkid', 'int' )
+3/23: formatsjekk.sjekktagg( jsondata, 'exif_fylke', 'int' )
+3/24: formatsjekk.sjekktagg( jsondata, 'exif_fylke', 'float' )
+3/25: formatsjekk.sjekktagg( jsondata, 'exif_fylke', 'int' )
+3/26: importlib.reload( formatsjekk)
+3/27: formatsjekk.sjekktagg( jsondata, 'exif_fylke', 'int' )
+3/28: importlib.reload( formatsjekk)
+3/29: formatsjekk.sjekktagg( jsondata, 'exif_fylke', 'int' )
+3/30: formatsjekk.sjekktagg( jsondata, 'exif_fylke', 'int' )
+3/31: importlib.reload( formatsjekk)
+3/32: formatsjekk.sjekktagg( jsondata, 'exif_fylke', 'int' )
+3/33: importlib.reload( formatsjekk)
+3/34: formatsjekk.sjekktagg( jsondata, 'exif_fylke', 'int' )
+3/35: importlib.reload( formatsjekk)
+3/36: formatsjekk.sjekktagg( jsondata, 'exif_fylke', 'int' )
+3/37: importlib.reload( formatsjekk)
+3/38: formatsjekk.sjekktagg( jsondata, 'exif_fylke', 'int' )
+3/39: jsondata
+3/40: formatsjekk.sjekktagg( jsondata, 'exif_meter', 'int' )
+3/41: formatsjekk.sjekktagg( jsondata, 'exif_meter', 'float' )
+3/42: importlib.reload( formatsjekk)
+3/43: formatsjekk.sjekk_alle_egenskaper( jsondata)
+3/44: importlib.reload( formatsjekk)
+3/45: formatsjekk.sjekk_alle_egenskaper( jsondata)
+3/46: importlib.reload( formatsjekk)
+3/47: formatsjekk.sjekk_alle_egenskaper( jsondata)
+3/48: importlib.reload( formatsjekk)
+3/49: formatsjekk.sjekk_alle_egenskaper( jsondata)
+3/50: jsondata['exif_roadident']
+3/51: importlib.reload( formatsjekk)
+3/52: formatsjekk.sjekk_alle_egenskaper( jsondata)
+3/53: formatsjekk.sjekk_alle_egenskaper( jsondata, kun_paakrevd=False)
+3/54: importlib.reload( formatsjekk)
+3/55: %run formatsjekk
+3/56: importlib.reload( formatsjekk)
+3/57: %run formatsjekk
+3/58: %run formatsjekk
+ 4/1: %run formatsjekk
+ 4/2: egenskapsjekk
+ 4/3: kvalitetskontroll( jsondata, 'asdf')
+ 4/4: sjekk_alle_egenskaper( jsondata, kun_paakrevd=False)
+ 4/5: %run formatsjekk
+ 4/6: %run formatsjekk
+ 4/7: %run formatsjekk
+ 4/8: %run formatsjekk
+ 4/9: %run formatsjekk
+4/10: %run formatsjekk
+4/11: %run formatsjekk
+4/12: %run formatsjekk
+4/13: %run formatsjekk
+4/14: !ls testdata
+4/15: !rm testdata/RV00004_S1D1_m10918_f4K.json
+4/16: %run formatsjekk
+ 5/1: %run formatsjekk.py
+ 6/1: %run fiksBK_feilvegkat.py
+ 6/2: %run fiksBK_feilvegkat.py
+ 6/3: seg
+ 6/4: seg['vegsystemreferanse']
+ 6/5: seg['vegsystemreferanse']['vegkategori']
+ 6/6: seg['vegsystemreferanse']['vegsystem']['vegkategori']
+ 6/7: %run fiksBK_feilvegkat.py
+ 6/8: %run fiksBK_feilvegkat.py
+ 6/9: bk1
+6/10: bk.info()'
+6/11: bk.info()
+6/12: bk.data.keys()
+6/13: bk.data['objekter'][0]['id']
+6/14: bk.data['objekter'][0]
+6/15: bk.refresh()
+6/16: bk1 = bk.nesteForekomst()
+6/17: bk1['id']
+6/18:
+for seg in bk['vegsegmenter']: 
+    print( seg['vegsystemreferanse']['kortform'] )
+6/19:
+for seg in bk1['vegsegmenter']: 
+    print( seg['vegsystemreferanse']['kortform'] )
+6/20: bk1.keys()
+6/21: bk1['lokasjon']
+6/22: bk1['lokasjon'].keys()
+6/23: bk1['lokasjon']['vegsystemreferanser']
+6/24:
+for vref in bk1['lokasjon']['vegsystemreferanser']: 
+    print( vref['kortform'] )
+6/25: bk1['id']
+6/26: bk1['metadata']
+6/27: bk.add_request_arguments( { 'segmentering' : False } )
+6/28: bk.refresh()
+6/29: %run fiksBK_feilvegkat.py
+6/30: seg
+6/31: %run fiksBK_feilvegkat.py
+6/32: bk.objektTypeDef
+6/33: from shapely import wkt
+6/34: !conda config --add channels conda-forge
+ 7/1: q
+ 8/1: %run fiksBK_feilvegkat.py
+ 8/2: seg1
+ 8/3: seg1.keys()
+ 8/4: seg1['geometri']
+ 8/5: seg1.keys()
+ 9/1: ipython
+ 9/2: %run fiksBK_feilvegkat.py
+10/1: %run fiksBK_feilvegkat.py
+10/2: %run fiksBK_feilvegkat.py
+11/1: %run fiksBK_feilvegkat.py
+11/2: %whos
+11/3: skalendres[0]
+11/4: skalendres[0]['egenskaper']
+11/5: skalendres[0]['vegsegmenter']
+11/6: test = gpd.read_file( 'fiksebk.gpkg')
+11/7: import fiona
+11/8: help(fiona.open)
+11/9: help(fiona.open)
+11/10: test = gpd.read_file( 'fiksebk.gpkg', driver='gpkg')
+11/11: %run fiksBK_feilvegkat.py
+11/12: %whos
+11/13: skalendres
+11/14: liste2 = nvdbapiv3.nvdbfagdata2records( skalendres)
+11/15: liste2
+12/1: %run fiksBK_feilvegkat.py
+12/2: %whos
+12/3: seg
+12/4: seg.keys()
+12/5: seg['vegsystemreferanser']
+12/6: seg['vegsystemreferanse']
+12/7: seg['vegsystemreferanse']['strekning']['trafikantgruppe']
+13/1: %run fiksBK_feilvegkat.py
+14/1: %run fiksBKvegnummer.py
+14/2: %run fiksBKvegnummer.py
+14/3: %run fiksBKvegnummer.py
+14/4: %run fiksBKvegnummer.py
+14/5: bk.info()
+14/6: %run fiksBKvegnummer.py
+14/7: data
+14/8: data.keys()
+14/9: data['vegnr'].keys()
+14/10: data['vegnr']['EV134-K'].keys()
+14/11: bk.info()
+14/12: %run fiksBKvegnummer.py
+14/13: %run fiksBKvegnummer.py
+14/14: len(alledata)
+14/15: endres
+14/16: len(endres)
+14/17: endres[0].keys()
+14/18: endres[0]['vegnr']['keys']
+14/19: endres[0]['vegnr'].keys()
+14/20: gmlgeom
+14/21: gmlgeom.geometryType()
+14/22: geom.geometryType()
+14/23: from shapely.geometry import MultiLineString
+14/24: nygeom = MultiLineString(  [ gmlgeom, geom] )
+14/25: gmlgeom.plot()
+14/26: plot( gmlgeom)
+14/27: gmlgeom
+14/28: nygeom
+14/29: nygeom.coords
+14/30: geom.coords
+14/31: geom.coords.xy
+14/32: gmlgeom.coords
+14/33: gmlgeom.coords.ctypes
+14/34: gmlgeom.coords.xy
+14/35: nygeom.geom_type
+14/36: nygeom.geoms
+14/37: nygeom.geoms.shape_factory
+14/38: nygeom.geoms.shape_factory()
+14/39: nygeom.geoms[]
+14/40: nygeom.geoms[0]
+14/41: nygeom.geoms[1]
+14/42: nygeom.geoms[1]
+14/43: geom.has_z
+14/44: from shapely.ops import unary_union
+14/45: nygeom = unary_union( gmlgeom, nygeom)
+14/46: nygeom = unary_union([ gmlgeom, nygeom])
+14/47: nygeom
+14/48: data
+14/49: geoms = [ wkt.loads( seg['geometri']['wkt'] ) for seg in data ]
+14/50: data.keys()
+14/51: data['vegnr']
+14/52: data['vegnr'].keys()
+14/53: data['vegnr']['EV134-K'].keys()
+14/54: data['vegnr']['EV134-K']['vegsegmenter'].keys()
+14/55: geoms = [ wkt.loads( seg['geometri']['wkt'] ) for seg in data['vegnr']['EV134-K']['vegsegmenter']  ]
+14/56: geoms
+14/57: lengde = [ geom.length for geom in geoms].sum()
+14/58: lengde = sum( [ geom.length for geom in geoms] )
+14/59: lengde
+14/60: nygeom = unary_union( geoms )
+14/61: nygeom
+14/62: nygeom.length
+14/63: %hist
+15/1: !touch dump540.py
+15/2: !code .
+15/3: %run dump540.py
+15/4: mylist[0]
+15/5: %run dump540.py
+15/6: %run dump540.py
+15/7: mylist[0]
+15/8: %whos
+15/9: tm.refresh()
+15/10: tm1 = tm.nesteForekomst()
+15/11: tm1
+15/12: mylist[0].keys()
+16/1: %run dump540.py
+16/2: mylist[0].keys()
+17/1: %run dump540.py
+17/2: %whos
+17/3: mylist[0]
+17/4: !rm -r __pycache__
+18/1: %run dump540.py
+18/2: %whos
+18/3: mylist[0]
+18/4: !code .
+19/1: %run dump540.py
+20/1: %run dump540.py
+21/1: %run dump540.py
+21/2: pdb.pm()
+22/1: mylist[0]
+22/2: %run dump540.py
+23/1: %run dump540.py
+24/1: mylist[0]
+24/2: %run dump540.py
+24/3: mylist[0]
+24/4: mylist[1]
+24/5: mylist[2]
+24/6: mylist[3]
+24/7: mypd = pd.DataFrame( mylist)
+24/8: mypd
+24/9: mypd.dtypes
+24/10: tm.refresh()
+24/11: tm1 = tm.nesteForekomst()
+24/12: tm1
+24/13: mypd
+24/14: tm1['id']
+24/15: mypd.dtypes
+24/16: mypd[['nvdbId', 'vref']]
+24/17: sm = tm1['vegsegmenter']
+24/18: sm[0]
+24/19: sm[1]
+24/20: [ (s['startdato'], s['sluttdato'], s['vegsystemreferanse']['kortform']) for s in sm if 'sluttdato' in s]
+24/21: mypd.dtypes
+25/1: %run dump540.py
+25/2: mypd = pd.DataFrame( mylist)
+25/3: mypd
+25/4: ?fiksBK_feilvegkat.liste2gpkg
+25/5: gdf_dump = fiksBK_feilvegkat.liste2gpkg( mylist, 'test.gpkg', 'trafikkmengde2019-12-31' )
+25/6: %run dump540.py
+25/7: %run dump540.py
+25/8: mindf['geometri']
+25/9: mindf['geometri']
+25/10: %run dump540.py
+25/11: %run dump540.py
+26/1: %run skriv_fikstjafs.py
+26/2: ?apiforbindelse
+26/3: ?apiforbindelse.apiforbindelse
+26/4: %run skriv_fikstjafs.py
+26/5: r = forb.les( url + endr, parmas={ 'inkluderResultat' : 'NEI'} )
+26/6: r = forb.les( url + endr, params={ 'inkluderResultat' : 'NEI'} )
+26/7: data = r.json()
+26/8: r.text
+26/9: forb.login( miljo='prodskriv')
+26/10: url
+26/11: r.url
+26/12: r = forb.les( url + endr )
+26/13: r.status
+26/14: r.ok
+26/15: r.text
+26/16: data = r.json()
+26/17: data
+26/18: data.keys()
+26/19: data['delvisOppdater']
+26/20: skrivnvdb.endringssett_mal( operasjon='delvisOppdater')
+26/21: from datetime import datetime
+26/22: datetime.now().sprintf()
+26/23: datetime.now().strftime("%Y-%m-%d")
+26/24: data['delvisOppdater']['vegobjekter']
+26/25: nyendring = skrivnvdb.endringssett_mal( operasjon='delvisOppdater')
+26/26:
+for obj in data['delvisOppdater']['vegobjekter']: 
+        obj['gyldighetsperiode']['startdato'] = datetime.now().strftime("%Y-%m-%d")
+            nyendring['delvisOppdater']['vegobjekter'].append( obj )
+26/27:
+for obj in data['delvisOppdater']['vegobjekter']: 
+    obj['gyldighetsperiode']['startdato'] = datetime.now().strftime("%Y-%m-%d")
+    nyendring['delvisOppdater']['vegobjekter'].append( obj )
+26/28: nyendring
+26/29: skrivtil = skrivnvdb.endringssett( nyendring)
+26/30: skrivtil.forbindelse = forb
+26/31: skrivtil.registrer( dryrun=True)
+26/32: skrivtil.startskriving()
+26/33: skrivtil.sjekkfremdrift()
+26/34: %hist
+26/35: %run skriv_fikstjafs.py
+26/36: %run skriv_fikstjafs.py
+26/37: %run skriv_fikstjafs.py
+27/1: %run skriveapistatistikk.py
+27/2: import apiforbindelse
+27/3: forb = apiforbindelse.apiforbindelse()
+27/4: forb.login( miljo='prodskriv')
+27/5: hentendringssett( forb, filnavn='tjafsedata.csv')
+28/1: import STARTHER
+28/2: import nvdbapiv3
+28/3: tmp = nvdbapiv3.nvdbFagdata(577)
+28/4: tm = tmp
+28/5: tm.respons
+28/6: tm.respons['inkluder'] = 'egenskaper'
+28/7: t1 = tm.nesteForekomst()
+28/8: t1.keys()'
+28/9: t1.keys()
+28/10: tmp = [ x['navn'] == 'Liste av lokasjonsattributt' for x in vf['egenskaper'] ]
+28/11: vf = t1
+28/12: tmp = [ x['navn'] == 'Liste av lokasjonsattributt' for x in vf['egenskaper'] ]
+28/13: tmp[0]
+28/14:  tmp = [ x for x in vf['egenskaper' if x['navn'] == 'Liste av lokasjonsattributt' ] ]
+28/15: tmp = [ x for x in vf['egenskaper'] if x['navn'] == 'Liste av lokasjonsattributt' ]
+28/16: tmp
+28/17: tmp[0].keys()
+28/18: tmp[0]['innhold'][0].keys()
+28/19: tmp[0]['innhold'][0]
+28/20: len(tmp)
+28/21: vf.keys()
+28/22: %run grab577.py
+28/23: %run grab577.py
+29/1: mindf
+29/2: %run grab577.py
+29/3: %run grab577.py
+29/4: %run grab577.py
+29/5: mindf
+29/6: mindf['veglenkesekvensid'].value_counts()
+29/7: mindf['sluttposisjon'].summary()
+29/8: mindf['sluttposisjon'].descibe()
+29/9: mindf['sluttposisjon'].describe()
+29/10: mindf['startposisjon'].describe()
+29/11: %run grab577.py
+29/12: %run grab577.py
+29/13: ?apiforbindelse.les
+29/14: %run grab577.py
+29/15: veg
+29/16: r.url
+29/17: %run grab577.py
+29/18: veg
+29/19: r.url
+29/20: r.status
+29/21: r.ok
+29/22: %run grab577.py
+29/23: mindf
+29/24: %run grab577.py
+29/25: mindf
+29/26: %run grab577.py
+29/27: %run grab577.py
+29/28: %run grab577.py
+29/29: %run grab577.py
+29/30: url
+29/31: url + 'asdf'
+29/32: url
+29/33: url
+29/34: print( url)
+29/35: %run grab577.py
+29/36: %run grab577.py
+29/37: %run grab577.py
+29/38: mindf
+29/39: mindf.dtypes
+29/40: mindf['mykey'].value_counts()
+29/41: %run grab577.py
+29/42: %run grab577.py
+29/43: mindf['geometri']
+29/44: pdb.pm()
+29/45: %run grab577.py
+29/46: %run grab577.py
+29/47: %run grab577.py
+29/48: %run grab577.py
+29/49: %run grab577.py
+29/50: mingdf
+29/51: mindf
+29/52: data
+29/53: vf
+29/54: %run grab577.py
+30/1: mingdf
+30/2: %run skriv_fikstjafs.py
+30/3: %run skriv_fikstjafs.py
+30/4: mingdf
+30/5: mingdf['kommune'].value_counts()
+30/6: mingdf['kommune'].drop_duplicates()
+30/7: list( mingdf['kommune'].drop_duplicates() )
+30/8: list( mingdf['kommune'].drop_duplicates() )
+30/9: mingdf.dtypes
+30/10: mingdf['mykey'].drop_duplicates()
+30/11: list( mingdf['mykey'].drop_duplicates() )
+29/55: %run grab577.py
+30/12: list( mingdf['mykey'].drop_duplicates() )
+30/13: %run skriv_fikstjafs.py
+30/14: list( mingdf['mykey'].drop_duplicates() )
+30/15: len( list( mingdf['mykey'].drop_duplicates() ) )
+30/16: len( list( mingdf['nvdbId'].drop_duplicates() ) )
+30/17: len( list( mingdf['kommune'].drop_duplicates() ) )
+30/18: len( list( mingdf['nvdbId'].drop_duplicates() ) )
+30/19: mingdf
+30/20: mingdf.dtypes
+30/21: mingdf
+30/22: groupby( 'nvdbId', 'kommune')
+30/23: mindf.groupby( 'nvdbId', 'kommune')
+30/24: mingdf.groupby( 'nvdbId', 'kommune')
+30/25: mingdf.dtypes
+30/26: mingdf.groupby( 'nvdbId', 'kommune')
+30/27: mingdf.groupby( 'nvdbId')
+30/28: mingdf.groupby(['nvdbId', 'kommune'])
+30/29: mingdf.groupby(['nvdbId', 'kommune']).agg('sum')
+30/30: mingdf.groupby(['nvdbId', 'kommune']).agg('count')
+30/31: len( mingdf.groupby(['nvdbId', 'kommune']).agg('count') )
+30/32: len( mingdf['mykey'] )
+30/33: len( mingdf['mykey'].drop_duplicates() )
+30/34: duplikater = mingdf[ mingdf.duplicated( subset='myKey')]
+30/35: duplikater = mingdf[ mingdf.duplicated( subset='myKey') ]
+30/36: mingdf.duplicated( 'myKey')
+30/37: duplikater = mingdf[ mingdf.duplicated( subset=['myKey'] ) ]
+30/38: duplikater = mingdf[ mingdf.duplicated( subset=['mykey'] ) ]
+30/39: len( duplikater)
+30/40: duplikater['kommune'].value_counts()
+30/41: duplikater['myKey'].value_counts()
+30/42: duplikater['mykey'].value_counts()
+30/43: duplikater['nvdbId'].value_counts()
+30/44: subset = mingdf[ mingdf['nvdbId'] == 237271718]
+30/45: subset
+30/46: subset['kommuner'].unique()
+30/47: subset['kommune'].unique()
+30/48: subset.groupby( 'kommune')
+30/49: subset.groupby( ['kommune'])
+30/50: subset.groupby( ['kommune'])
+30/51: %hist
+30/52: subset.groupby( ['kommune']).agg('count')
+30/53: r = subset.groupby( ['kommune']).agg('count')
+30/54: r
+30/55: subset.groupby( ['kommune']).agg('count').sort( 'nvdbId' )
+30/56: subset.groupby( ['kommune']).agg('count').sort_values( 'nvdbId' )
+30/57: subset.groupby( ['kommune']).agg('count').sort_values( 'nvdbId', ascending='False' )
+30/58: subset.groupby( ['kommune']).agg('count').sort_values( 'nvdbId', ascending=False )
+30/59: %hist
+30/60: subset.groupby( ['myKey']).agg('count').sort_values( 'nvdbId', ascending=False )
+30/61: subset.groupby( ['mykey']).agg('count').sort_values( 'nvdbId', ascending=False )
+30/62: %hist
+30/63: gruppe = subset.groupby( ['mykey']).agg('count').sort_values( 'nvdbId', ascending=False )
+30/64: gruppe.dtypes
+30/65: gruppe
+30/66: type( gruppe)
+30/67: %run skriv_fikstjafs.py
+30/68: %run skriv_fikstjafs.py
+30/69: row
+30/70: mingdf.dtypes
+30/71: %run skriv_fikstjafs.py
+30/72: %run skriv_fikstjafs.py
+30/73: row
+30/74: row['Name']
+30/75: type(row)
+30/76: type(gruppe)
+30/77: %run skriv_fikstjafs.py
+30/78: %run skriv_fikstjafs.py
+30/79: gruppe
+30/80: gruppe.reset_index()
+30/81: gruppe.reset_index( inplace=True)
+30/82: gruppe
+30/83: %run skriv_fikstjafs.py
+30/84: %run skriv_fikstjafs.py
+30/85: %run skriv_fikstjafs.py
+30/86: import skrivnvdb
+30/87: subset
+30/88: !mkdir data
+30/89: !mv fiks5776*.gpkg data/
+30/90: !mv fiks5777*.gpkg data/
+30/91: !mv fiks5778*.gpkg data/
+30/92: !mv fiks5771*.gpkg data/
+30/93: !mv fiks5779*.gpkg data/
+30/94: !mv fiks5772*.gpkg data/
+30/95: !mv fiks5773*.gpkg data/
+30/96: !mv fiks5774*.gpkg data/
+30/97: !mv fiks5775*.gpkg data/
+30/98: import nvdbutilities
+30/99: import importlib
+30/100: importlib.reload( nvdbutilities)
+30/101: subset
+30/102: subset.iloc( 0, 'egenskaper')
+30/103: subset.iloc[ 0, 'egenskaper']
+30/104: subset
+30/105: subset.iloc[ 0, 1]
+30/106: import json
+30/107: json.loads( subset.iloc[ 0, 1] )
+30/108: nvdbutilities.skriveegenskap2endringssett( json.loads( subset.iloc[ 0, 1] ) )
+30/109: skrivnvdb.endringssett_mal( operasjon='registrer')
+30/110: subset.dtypes
+30/111: 1e-7
+30/112: 1e-7
+30/113: mingdf['diff'] = mingdf['sluttposisjon'] - mingdf['startposisjon']
+30/114: mingdf[ mingdf['diff'] < 0]
+30/115: mingdf[ mingdf['diff'] == 0]
+30/116: mingdf[ mingdf['diff'] > 0]
+30/117: importlib.reload( nvdbutilities)
+30/118: importlib.reload( nvdbutilities)
+30/119: importlib.reload( nvdbutilities)
+30/120: importlib.reload( nvdbutilities)
+30/121: importlib.reload( nvdbutilities)
+30/122: nvdbutilities.d577_subset2endringssett( subset)
+30/123: importlib.reload( nvdbutilities)
+30/124: nvdbutilities.d577_subset2endringssett( subset)
+30/125: importlib.reload( nvdbutilities)
+30/126: nvdbutilities.d577_subset2endringssett( subset)
+30/127: subset
+30/128: nvdbutilities.d577_subset2endringssett( subset)
+30/129: importlib.reload( nvdbutilities)
+30/130: nvdbutilities.d577_subset2endringssett( subset)
+30/131: importlib.reload( nvdbutilities)
+30/132: nvdbutilities.d577_subset2endringssett( subset)
+30/133: subset
+30/134: %run skriv_fikstjafs.py
+30/135: %run skriv_fikstjafs.py
+30/136: forb.login( miljo='skrivprod')
+30/137: forb.login( miljo='prodskriv')
+30/138: skrivendr.data = alleendringssett[0]
+30/139: skrivendr.registrer( dryrun=True)
+30/140: skrivendr.minlenke
+30/141: skrivendr.forbindelse.apiurl
+30/142: skrivendr.forb.login( miljo='prodskriv')
+30/143: skrivendr.forbindelse.login( miljo='prodskriv')
+30/144: skrivendr.registrer( dryrun=True)
+30/145: skrivendr.forbindelse.login( miljo='prodskriv')
+30/146: skrivendr.registrer( dryrun=True)
+30/147: skrivendr.data
+30/148: %run skriv_fikstjafs.py
+30/149: skrivendr.data = alleendringssett[0]
+30/150: skrivendr.forbindelse.login( miljo='prodskriv')
+30/151: skrivendr.registrer( dryrun=True)
+30/152: skrivendr.forbindelse.login( miljo='prodskriv')
+30/153: skrivendr.registrer( dryrun=True)
+30/154: skrivendr.forbindelse.login( miljo='prodskriv')
+30/155: skrivendr.registrer( dryrun=True)
+30/156: skrivendr.data
+30/157: importlib.reload( nvdbutilities)
+   1: %run skriv_fikstjafs.py
+   2: skrivendr.data = alleendringssett[0]
+   3: skrivendr.data
+   4: skrivendr.registrer(dryrun=True)
+   5: skrivendr.apiurl
+   6: skrivendr.forbindelse.apiurl
+   7: skrivtil.forbindelse.login( miljo='prodskriv' )
+   8: skrivendr.forbindelse.apiurl
+   9: skrivtil.registrer( dryrun=True)
+  10: skrivtil.data
+  11: skrivtil.data = alleendringssett[0]
+  12: skrivtil.registrer()
+  13: skrivtil.minlenke
+  14: skrivtil.startskriving()
+  15: skrivtil.sjekkframdrift()
+  16: skrivtil.sjekkfremdrift()
+  17: skrivtil.sjekkfremdrift()
+  18: %run skriv_fikstjafs.py
+  19: %run skriv_fikstjafs.py
+  20: %run skriv_fikstjafs.py
+  21: %run FUBAR_slett.py
+  22: %run FUBAR_slett.py
+  23: %run FUBAR_slett.py
+  24: data.keys()
+  25: data['antallTotalt']
+  26: data['endringssett'][0]
+  27: endr = data['endringssett'][0]
+  28: endr
+  29: endr.keys()
+  30: endr['status']['ressurser']
+  31:
+for endr in data['endringssett']: 
+    starturl = [ x['src'] for x in endr['status']['ressurser'] if x['rel'] == 'start' ]
+    print( starturl[0])
+  32:
+for endr in data['endringssett']: 
+    starturl = [ x['src'] for x in endr['status']['ressurser'] if x['rel'] == 'start' ]
+    forb.les( starturl[0])
+  33:
+for endr in data['endringssett']: 
+    starturl = [ x['src'] for x in endr['status']['ressurser'] if x['rel'] == 'slett' ]
+    forb.les( starturl[0])
+  34: endr
+  35:
+for endr in data['endringssett']: 
+    starturl = [ x['src'] for x in endr['status']['ressurser'] if x['rel'] == 'kanseller' ]
+    forb.les( starturl[0])
+  36: %run skriv_fikstjafs.py
+  37: %run skriv_fikstjafs.py
+  38: %run grab577.py
+  39: filnavn
+  40: %run skriv_fikstjafs.py
+  41: mingdf
+  42: gruppert = mingdf.groupby(['nvdbid', 'kommune']).agg( 'count').sort_values('egenskaper')
+  43: gruppert = mingdf.groupby(['nvdbId', 'kommune']).agg( 'count').sort_values('egenskaper')
+  44: gruppert
+  45: gruppert = mingdf.groupby(['nvdbId', 'kommune']).agg( 'count').sort_values('egenskaper', ascending=False)
+  46: gruppert
+  47: flerekomm = gruppert[ gruppert['egenskaper'] > 1]
+  48: flerekomm
+  49: gruppert[ gruppert['egenskaper'] == 2]
+  50: flerekomm
+  51: unike = mingdf[ mingdf.duplicated( ['nvdbid', 'kommune']) ]
+  52: unike = mingdf[ mingdf.duplicated( subset=['nvdbid', 'kommune']) ]
+  53: unike = mingdf[ mingdf.duplicated( subset=['nvdbId', 'kommune']) ]
+  54: unike
+  55: unike = mingdf[ mingdf.duplicated( subset=['nvdbId', 'kommune']) ][ [ 'nvdbId', 'kommune' ]]
+  56: unike
+  57: len( mingdf)
+  58: unike
+  59: unike[  unike.duplicated( subset=['nvdbId'], keep=False) ]
+  60: flerekommuner = unike[  unike.duplicated( subset=['nvdbId'], keep=False) ]
+  61: flerekommuner.groupby( ['nvndbId'] ).agg('count')
+  62: flerekommuner.groupby( ['nvdbId'] ).agg('count')
+  63: flerekommuner.groupby( ['nvdbId'] ).agg('count').sort_values( ascending='False')
+  64: %hist
+  65: flerekommuner.groupby( ['nvdbId'] ).agg('count').sort_values('kommune',  ascending='False')
+  66: flerekommuner.groupby( ['nvdbId'] ).agg('count').sort_values('kommune',  ascending=False )
+32/1: %run dump577.py
+  67: %hist
+  68: flerekommuner[ flerekommuner['nvdbId'] == 237271718]
+  69: unike
+  70: %hist
+  71: gruppert
+  72: gruppert[ gruppert['egenskaper'] > 1]
+  73: flerekommuner = gruppert[ gruppert['egenskaper'] > 1]['egenskaper']
+  74: flerekommuner
+  75: flerekommuner.reset_index()
+  76: flerekommuner.reset_index(inplace=True)
+  77: flerekommuner = flerekommuner.reset_index()
+  78: flerekommuner
+  79: flerekommuner.rename( columns={ 'egenskaper' : 'antallStedfestinger' } )
+  80: flerekommuner.rename( columns={ 'egenskaper' : 'antallStedfestinger' }, inplace=True )
+  81: flerekommuner
+  82: flerekommuner.sort_values( 'nvdbId')
+  83: flerekommuner['N'] = 1
+  84: flerekommuner
+  85: flerekommuner.groupby( ['nvdbId', 'kommune'] ).agg('count')
+  86: flerekommuner.groupby( ['nvdbId'] ).agg('count')
+  87: flerekommuner.groupby( ['nvdbId'] ).agg({'kommune' :  'count', 'antallStedfestinger' : 'sum', 'N' : 'sum' } )
+  88: pernvdbid = flerekommuner.groupby( ['nvdbId'] ).agg({'kommune' :  'count', 'antallStedfestinger' : 'sum', 'N' : 'sum' } )
+  89: pernvdbid[ pernvdbid['N'] > 1]
+  90: pernvdbid[ pernvdbid['N'] > 1].sort_values( 'N')
+  91: pernvdbid[ pernvdbid['N'] > 1].sort_values( 'N', ascending=False)
+  92: pernvdbid.reset_index( inplace=True)
+  93: pernvdbid[ pernvdbid['nvdbId'] == 114140751 ]
+32/2: ! code .
+32/3: %whos
+32/4: ?tm.to_records
+32/5: ?tm.to_records
+32/6: %run dump577.py
+32/7: pdb.pm()
+32/8: minGdf['vegsegmenter']
+32/9: minGdf.drop( 'vegsegmenter')
+32/10: minGdf.drop( 'vegsegmenter', axis=1)
+32/11: minGdf.drop( 'vegsegmenter', axis=1, inplace=True)
+32/12:  minGdf.to_file( filnavn, layer='vf577', driver="GPKG")
+32/13: %hist
+  94: %history -g -f analyser577.txt
