@@ -28,4 +28,5 @@ if __name__ == '__main__':
     mindf['geometry'] = mindf['geometri'].apply( wkt.loads )
     minGdf = gpd.GeoDataFrame( mindf, geometry='geometry', crs=25833 )
     # må droppe kolonne vegsegmenter hvis du har vegsegmenter=False 
+    minGdf.drop( 'vegsegmenter', 1)
     minGdf.to_file( filnavn, layer='vf577', driver="GPKG")  
