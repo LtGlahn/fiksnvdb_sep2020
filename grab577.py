@@ -12,6 +12,8 @@ import nvdbapiv3
 from apiforbindelse import apiforbindelse
 import nvdbutilities
 
+historiskelenker = [ ]
+
 
 if __name__ == '__main__': 
 
@@ -26,14 +28,15 @@ if __name__ == '__main__':
 
     data = [ ]
     vf = tm.nesteForekomst()
+    count = 0
     while vf: 
 
         # data = [ ]
+        count += 1
 
         egenskaper = nvdbutilities.registreringsegenskaper( vf['egenskaper'])
 
         tmp = [ x for x in vf['egenskaper'] if x['navn'] == 'Liste av lokasjonsattributt' ]
-        count = 0 
         for linje in tmp[0]['innhold']:
             rad = { 'nvdbId' : vf['id'],
                     'egenskaper' : egenskaper,
@@ -57,11 +60,27 @@ if __name__ == '__main__':
                 data.append( rad )
 
             else: 
-                print( 'Fant ingen veg for', r.url )
+                print( 'Ugyldig lenkesekvens', rad['veglenkesekvensid'], rad['startposisjon'], rad['sluttposisjon'], 'for objekt 577', rad['nvdbId'] )
 
-            count += 1
-            if count % 1000 == 0: 
-                print( 'iterasjon', count, 'av', len(tmp[0]['innhold'] ),  'for objekt', vf['id'])
+                r = forb.les( 'https://nvdbapiles-v3.utv.atlas.vegvesen.no/vegnett/veglenkesekvenser/' + str( linje['veglenkesekvensid']) ) 
+                if r.ok: 
+                    hist = r.json()
+                    for hl in hist['veglenker']: 
+                        sl = deepcopy( hl )
+                        if 'feltoversikt' in sl.keys(): 
+                            sl['feltoversikt'] = '#'.join( hl['feltoversikt'])
+
+                        sl['geometri'] = hl['geometri']['wkt']
+                        sl['problem577id'] = rad['nvdbId']
+                        sl['problem577_frapos'] = rad['startposisjon']
+                        sl['problem577_tilpos'] = rad['sluttposisjon']
+                        historiskelenker.append( sl )
+
+                else: 
+                    print( 'Fant ikke historisk veglenke: ', r.status_code, r.url )
+
+        if count % 100 == 0: 
+            print( '=== > Objekt', count, 'av', tm.antall)
 
                 
         # # vf = False   
@@ -71,7 +90,7 @@ if __name__ == '__main__':
         #     print( "fant ingen gyldige veger for objekt", vf['id'])
 
         tidsbruk = datetime.now( ) - t0 
-        print( "tidsbruk:", tidsbruk.total_seconds( ), "sekunder")
+        # print( "tidsbruk:", tidsbruk.total_seconds( ), "sekunder")
 
         vf = tm.nesteForekomst()
 
@@ -81,3 +100,9 @@ if __name__ == '__main__':
     mindf['geometry'] = mindf['geometri'].apply( wkt.loads )
     minGdf = gpd.GeoDataFrame( mindf, geometry='geometry', crs=25833 )
     minGdf.to_file( filnavn, layer='vf577', driver="GPKG")  
+
+    histdf = pd.DataFrame( historiskelenker )
+    histdf['geometry'] = histdf['geometri'].apply( wkt.loads )
+    histGdf = gpd.GeoDataFrame( histdf, geometry='geometry', crs=25833 )
+    histGdf.to_file( 'historisk577.gpkg', layer='vf577', driver="GPKG")  
+
