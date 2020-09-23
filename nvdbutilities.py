@@ -203,6 +203,9 @@ def d577_subset2endringssett( mydataframe  ):
 
     mal = skrivnvdb.endringssett_mal( operasjon='registrer')
 
+    
+
+
     etobj =  {
             "stedfesting": {
                 "linje": [ ]
@@ -210,7 +213,7 @@ def d577_subset2endringssett( mydataframe  ):
             "gyldighetsperiode": {
                 "startdato": "2020-09-20"
             },
-            "typeId": 577,
+            "typeId": int( mydataframe.iloc[0 ]['objekttype'] ),
             "tempId": "577#1",
             "egenskaper": skriveegenskap2endringssett( json.loads( mydataframe.iloc[ 0, 1] ) )           
         }

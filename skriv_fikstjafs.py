@@ -12,15 +12,19 @@ import nvdbutilities
 
 
 skrivtil = skrivnvdb.endringssett( )
-# skrivtil.forbindelse.login( miljo='prodskriv' )
+skrivtil.forbindelse.login( miljo='prodskriv' )
 
-fil = 'fiks577_v2.gpkg' # 'fiks577_alle.gpkg'
+nvdbfilterid = [ 1007739029, 1007739322 ]
+
+fil = 'fiks899.gpkg' # 'fiks577_alle.gpkg'
 
 mingdf = gpd.read_file( fil )
 alleid = list( mingdf['nvdbId'].unique() ) 
 
 count = 0 
 alleendringssett = []
+filtrertendringssett = [ ]
+filtrertendringssett_v2 = [ ]
 
 for nvdbId in alleid: 
 
@@ -34,16 +38,37 @@ for nvdbId in alleid:
         for index, row in gruppe.iterrows(): 
             if index == 0: 
                 print( 'Lar', row['mykey'], 'ligge med', row['nvdbId'], 'stedfestinger' )
+
+                if nvdbId in nvdbfilterid:  
+
+                    subset2 = mingdf[ mingdf['mykey'] == row['mykey']]
+                    endringssett = nvdbutilities.d577_subset2endringssett( subset2 )
+                    skrivtil.data = endringssett
+                    skrivtil.forbindelse.klientinfo( 'bk889_' + row['mykey'] )
+                    skrivtil.registrer()
+                    skrivtil.startskriving()
+                    
+                    ###  alleendringssett.append( endringssett)
+
+                    if nvdbId in nvdbfilterid:  
+                        filtrertendringssett_v2.append( endringssett )                
+
             else:
                 print( '\tskriver', row['mykey'], 'med',   row['nvdbId'], 'stedfestinger' )
                 count += 1 
                 subset2 = mingdf[ mingdf['mykey'] == row['mykey']]
                 endringssett = nvdbutilities.d577_subset2endringssett( subset2 )
                 skrivtil.data = endringssett
-                skrivtil.forbindelse.klientinfo( 'vegfunksjon_' + row['mykey'] )
+                skrivtil.forbindelse.klientinfo( 'bk889_' + row['mykey'] )
                 # skrivtil.registrer()
                 # skrivtil.startskriving()
                 alleendringssett.append( endringssett)
+
+                if nvdbId in nvdbfilterid:  
+                    filtrertendringssett.append( endringssett )
+                    
+                    # skrivtil.registrer()
+                    # skrivtil.startskriving()
             
 
 print( count, "endringssett")
