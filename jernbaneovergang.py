@@ -11,7 +11,6 @@ from datetime import datetime
 import STARTHER
 import nvdbapiv3
 from apiforbindelse import apiforbindelse
-import nvdbutilities
 
 
 if __name__ == '__main__': 
@@ -23,35 +22,55 @@ if __name__ == '__main__':
     bk = nvdbapiv3.nvdbFagdata( 900)
     bk.filter( { 'overlapp' : '100'})
     dfbk = pd.DataFrame( bk.to_records( ) )
-    dfkb = dfbk[['objekttype', 'nvdbId', 'Bruksklasse', 'Bruksklasse vinter',  
+    dfbk_2 = dfbk[['objekttype', 'nvdbId', 'Bruksklasse', 'Bruksklasse vinter',  
                 'Maks vogntoglengde', 'Maks totalvekt', 'Merknad',  
                 'veglenkesekvensid', 'startposisjon', 'sluttposisjon']].copy( )
 
-    dfkb.rename( columns={  'objekttype' : 'BKobjekttype', 'nvdbId' : 'bkNvdbId', 
+    # Døper om så vi unngår navnekollisjon mellom data om bruksklasse og jernbaneoverganger
+    dfbk_2.rename( columns={  'objekttype' : 'BKobjekttype', 'nvdbId' : 'bkNvdbId', 
                             'veglenkesekvensid' : 'bk_vid', 'startposisjon' : 'bkstart', 
                             'sluttposisjon' : 'bkslutt'  }, inplace=True)
 
 
-# Lager virituell database, slik at vi kan gjøre SQL-spørringer
+    # Lager virituell database, slik at vi kan gjøre SQL-spørringer
     conn = sqlite3.connect( ':memory:')
-    temp2010.to_sql( 'v2010', conn, index=False )
-    temp2009.to_sql( 'v2009', conn, index=False )
+    dfjb.to_sql( 'jb', conn, index=False )
+    dfbk_2.to_sql( 'bk', conn, index=False )
 
-    # Finner overlapp mellom ERF-veger per 31.12.2009 og K-veger per 1.1.2010
-    # Overlapp = samme plassering på samme veglenkesekvens
+    # Finner overlapp mellom jernbaneoverganger (punkt på veglenkesekvens)
+    # og bruksklasse (strekning på veglenkesekvens). 
     qry = """
-            select  * from v2009
-                    INNER JOIN v2010 ON 
-                    v2009.d2009_veglenkesekvensid = v2010.veglenkesekvensid and
-                    v2009.d2009_startposisjon     < v2010.sluttposisjon and 
-                    v2009.d2009_sluttposisjon     > v2010.startposisjon
-            """
+            select  * from jb
+                    LEFT JOIN bk ON 
+                    jb.veglenkesekvensid     = bk.bk_vid   and
+                    jb.relativPosisjon       > bk.bkstart  and 
+                    jb.relativPosisjon       < bk.bkslutt
+        """
 
+    joined = pd.read_sql_query( qry, conn)
 
-    # mindf = pd.DataFrame( data )
-    # filnavn = 'dump577_v2.gpkg'
-    # mindf['geometry'] = mindf['geometri'].apply( wkt.loads )
-    # minGdf = gpd.GeoDataFrame( mindf, geometry='geometry', crs=25833 )
-    # # må droppe kolonne vegsegmenter hvis du har vegsegmenter=False 
-    # minGdf.drop( 'vegsegmenter', 1)
-    # minGdf.to_file( filnavn, layer='vf577', driver="GPKG")  
+    # Hvilke egenskaper og rekkefølge vi ønsker i utskrift / presentasjon
+    # Merk også at vi ikke har noen jb-kryssinger med egenskapene "Geometri, punkt" eller "Tillegsinformasjon"  
+    # Se datatakatlogen for beskrivelse https://datakatalogen.vegdata.no/100-Jernbanekryssing
+    utskriftkolonner = [ 'objekttype', 'nvdbId', 'versjon', 'startdato', 'Type',
+                        'fylke', 'kommune', 'vegkategori', 'vref',
+                        'Bruksklasse', 'Bruksklasse vinter','Maks vogntoglengde','Maks totalvekt','Merknad',
+                        'BKobjekttype', 'bkNvdbId', 
+                        'typeVeg','trafikantgruppe', 
+                        'veglenkesekvensid', 'relativPosisjon', 'adskilte_lop', 'geometri'
+                      ]
+
+    # Fjerner jernbanekryssinger med Type = 'Veg over', 'Veg under'
+    # Se datatakatlogen for beskrivelse https://datakatalogen.vegdata.no/100-Jernbanekryssing
+    joined.fillna('', inplace=True) # Tomme verdier (NaN) => tom tekst ('')
+    presentasjon = joined[ ~joined['Type'].str.contains( 'Veg') ][utskriftkolonner]
+
+    # Lagrer resultater 
+    filnavn = 'jernbanekryssinger' + datetime.now().strftime('%Y-%m-%d')
+    presentasjon.to_excel( filnavn + '.xlsx' )
+
+    jbGdf = presentasjon.copy()
+    jbGdf['geometry'] = jbGdf['geometri'].apply( wkt.loads )
+    jbGdf.drop( columns='geometri', inplace=True)
+    jbGdf = gpd.GeoDataFrame( jbGdf, geometry='geometry', crs=25833)
+    jbGdf.to_file( filnavn + '.gpkg', layer='jernbanekryssing', driver="GPKG")  
