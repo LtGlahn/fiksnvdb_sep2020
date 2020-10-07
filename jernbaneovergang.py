@@ -16,7 +16,7 @@ from apiforbindelse import apiforbindelse
 if __name__ == '__main__': 
 
     jb = nvdbapiv3.nvdbFagdata( 100)
-    jb.filter( { 'overlapp' : '900'})
+    # jb.filter( { 'overlapp' : '900'})
     dfjb  = pd.DataFrame( jb.to_records(   )) 
 
     bk = nvdbapiv3.nvdbFagdata( 900)
@@ -65,6 +65,8 @@ if __name__ == '__main__':
     joined.fillna('', inplace=True) # Tomme verdier (NaN) => tom tekst ('')
     presentasjon = joined[ ~joined['Type'].str.contains( 'Veg') ][utskriftkolonner]
 
+# %%
+    
     # Lagrer resultater 
     filnavn = 'jernbanekryssinger' + datetime.now().strftime('%Y-%m-%d')
     presentasjon.to_excel( filnavn + '.xlsx' )
@@ -74,3 +76,5 @@ if __name__ == '__main__':
     jbGdf.drop( columns='geometri', inplace=True)
     jbGdf = gpd.GeoDataFrame( jbGdf, geometry='geometry', crs=25833)
     jbGdf.to_file( filnavn + '.gpkg', layer='jernbanekryssing', driver="GPKG")  
+
+

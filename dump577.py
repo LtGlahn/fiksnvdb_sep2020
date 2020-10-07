@@ -24,9 +24,9 @@ if __name__ == '__main__':
     data = tm.to_records( vegsegmenter=False  )
  
     mindf = pd.DataFrame( data )
-    filnavn = 'dump577_v2.gpkg'
+    filnavn = 'dump577_5okt.gpkg'
     mindf['geometry'] = mindf['geometri'].apply( wkt.loads )
     minGdf = gpd.GeoDataFrame( mindf, geometry='geometry', crs=25833 )
     # må droppe kolonne vegsegmenter hvis du har vegsegmenter=False 
-    minGdf.drop( 'vegsegmenter', 1)
+    minGdf.drop( 'vegsegmenter', 1, inplace=True)
     minGdf.to_file( filnavn, layer='vf577', driver="GPKG")  
